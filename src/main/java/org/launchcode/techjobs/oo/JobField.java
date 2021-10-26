@@ -19,17 +19,15 @@ public abstract class JobField {
 
     @Override
     public String toString() {
-        return "JobField{" +
-                "value='" + value + '\'' +
-                '}';
+        return value;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) {  // Two objects are equal if they have the same id.
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof JobField)) return false;
         JobField jobField = (JobField) o;
-        return id == jobField.id && Objects.equals(value, jobField.value);
+        return getId() == jobField.getId();
     }
 
     @Override

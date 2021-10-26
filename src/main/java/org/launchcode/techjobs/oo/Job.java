@@ -39,32 +39,6 @@ public class Job {
         return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
     }
 
-    @Override
-    public String toString() {
-        if (name.equals("")){
-            name = "Data not available";
-        }
-        if (employer.getValue().equals("") || employer.getValue() == null){
-            employer.setValue("Data not available");
-        }
-        if (location.getValue().equals("") || location.getValue() == null){
-            location.setValue("Data not available");
-        }
-        if (coreCompetency.getValue().equals("") || coreCompetency.getValue() == null){
-            coreCompetency.setValue("Data not available");
-        }
-        if (positionType.getValue().equals("") || positionType.getValue() == null){
-            positionType.setValue("Data not available");
-        }
-
-        return "\nID: " + id +
-                "\nName: " + name +
-                "\nEmployer: " + employer +
-                "\nLocation: " + location +
-                "\nPosition Type: " + positionType +
-                "\nCore Competency: " + coreCompetency +
-                '\n';
-    }
 
     @Override
     public int hashCode() {
@@ -118,5 +92,33 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+    @Override
+    public String toString() {
+        String na = "Data not available";
+        if (name == null || name == "") {
+            name = na;
+        }
+        if (employer == null || employer.getValue() == "") {
+            employer.setValue(na);
+        }
+        if (location == null || location.getValue() == "") {
+            location.setValue(na);
+        }
+        if (positionType == null || positionType.getValue() == "") {
+            positionType.setValue(na);
+        }
+        if (coreCompetency == null || coreCompetency.getValue() == "") {
+            coreCompetency.setValue(na);
+        }
+
+        return "\n" + "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency + "\n";
+
+
     }
 }
